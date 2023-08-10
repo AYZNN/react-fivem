@@ -22,7 +22,7 @@ We Recommend using [pnpm](https://pnpm.io/installation#on-windows), but you can 
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/react-fivem.git
+   git clone https://github.com/Cfx-Store/react-fivem.git
    cd react-fivem
    ```
 
