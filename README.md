@@ -19,6 +19,8 @@ Follow these steps to set up and start using the 'react-fivem' template:
 
 We Recommend using [pnpm](https://pnpm.io/installation#on-windows), but you can use every package manager you prefer.
 
+NOTE: Make sure to run everything in the `web/` directory.
+
 1. **Clone the repository:**
 
    ```bash
@@ -38,6 +40,17 @@ We Recommend using [pnpm](https://pnpm.io/installation#on-windows), but you can 
    ```bash
    pnpm i
    pnpm build
+   ```
+
+4. **Adding ShadCN components**
+   List of all components: https://ui.shadcn.com/docs/components/accordion
+
+   ```bash
+   pnpm ui:add <component>
+   ```
+
+   ```ts
+   import { <Component> } from "@/components/ui/<component>";
    ```
 
 ## Guide
