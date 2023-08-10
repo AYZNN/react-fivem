@@ -43,6 +43,7 @@ NOTE: Make sure to run everything in the `web/` directory.
    ```
 
 4. **Adding ShadCN components**
+
    List of all components: https://ui.shadcn.com/docs/components/accordion
 
    ```bash
