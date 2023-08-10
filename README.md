@@ -56,6 +56,7 @@ export function Component() {
 ```
 
 **Hiding the NUI**
+
 For hiding the UI, we can't use `setVisible` since this will only hide the frame but not disable the NUI focus and cursor ingame. Therefore we need to use the `hide` method.
 
 ```tsx
