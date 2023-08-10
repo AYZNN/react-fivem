@@ -42,8 +42,7 @@ We Recommend using [pnpm](https://pnpm.io/installation#on-windows), but you can 
 
 ## Guide
 
-**Visibility**
-Showing the NUI:
+**Showing the NUI:**
 
 ```tsx
 import { useVisibility } from "@/context/visibility-context";
