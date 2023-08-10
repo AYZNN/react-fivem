@@ -4,23 +4,15 @@ import { Check, ChevronsUpDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
+import { useVisibility } from "@/context/visibility-context";
 import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from "@/components/ui/command";
-
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Label } from "./components/ui/label";
-import { useVisibility } from "./context/visibility-context";
 
 const dummyPlayers = [
   {
@@ -70,10 +62,10 @@ function PlayerComboBox() {
             <div
               key={player.id}
               className={cn(
-                "flex items-center justify-between px-4 py-2 cursor-pointer",
+                "flex cursor-pointer items-center justify-between px-4 py-2",
                 value === player.name
                   ? "bg-primary text-primary-foreground"
-                  : "hover:bg-gray-100"
+                  : "hover:bg-gray-100",
               )}
               onClick={() => {
                 setValue(player.name);
@@ -94,8 +86,8 @@ export default function App() {
   const { hide } = useVisibility();
 
   return (
-    <div className="w-96 bg-background rounded border flex flex-col p-5 gap-5">
-      <h1 className="text-center text-2xl font-bold pb-5">Create Gang</h1>
+    <div className="flex w-96 flex-col gap-5 rounded border bg-background p-5">
+      <h1 className="pb-5 text-center text-2xl font-bold">Create Gang</h1>
       <div className="space-y-6">
         <div className="flex flex-col gap-y-2">
           <Label>Name</Label>
