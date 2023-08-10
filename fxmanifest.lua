@@ -13,6 +13,10 @@ games {
   "gta5"
 }
 
+client_scripts {
+  "src/client/**/*"
+}
+
 files {
   "web/dist/index.html",
   "web/dist/**/*"
