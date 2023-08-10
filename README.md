@@ -68,6 +68,32 @@ export function Component() {
 }
 ```
 
+**Fetching and Events**
+
+```lua
+RegisterNUICallback("getVehicleSpeed", function(_, db)
+  cb(vehicleSpeed)
+end)
+```
+
+```tsx
+import { fetchNui } from "@/lib/nui";
+
+export function Speed() {
+  const [speed, setSpeed] = useState<number | null>(null);
+
+  // Fetch the current speed
+  useEffect(() => {
+    // The third argument (60) is the moch data, so we can run this in browser and still show the data.
+    fetchNui<number>("getVehicleSpeed", {}, 60).then(setSpeed);
+  }, []);
+  // Listen for setVehicleSpeed events
+  useNuiEvent<boolean>("setVehicleSpeed", setSpeed);
+
+  return <span>Speed: {speed}</span>;
+}
+```
+
 ### Contribution
 
 Any type of contribution is greatly appreciated.
