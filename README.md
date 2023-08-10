@@ -75,6 +75,8 @@ export function Component() {
 RegisterNUICallback("getVehicleSpeed", function(_, db)
   cb(vehicleSpeed)
 end)
+
+SendReactMessage("setVehicleSpeed", vehicleSpeed)
 ```
 
 ```tsx
@@ -88,6 +90,7 @@ export function Speed() {
     // The third argument (60) is the moch data, so we can run this in browser and still show the data.
     fetchNui<number>("getVehicleSpeed", {}, 60).then(setSpeed);
   }, []);
+
   // Listen for setVehicleSpeed events
   useNuiEvent<boolean>("setVehicleSpeed", setSpeed);
 
