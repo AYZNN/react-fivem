@@ -1,5 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
+import DebugOverlay from "@/components/debug-overlay";
+
 import useNuiEvent from "@/hooks/useNuiEvent";
 
 import { cn, isBrowser } from "@/lib/utils";
@@ -10,11 +12,13 @@ const exitKeys = ["Backspace", "Escape"];
 type VisiblityContextValue = {
   visible: boolean;
   setVisible: (visible: boolean) => void;
+  hide: () => void;
 };
 
 const Context = createContext<VisiblityContextValue>({
   visible: false,
   setVisible: (_) => {},
+  hide: () => {},
 });
 
 function getInitialVisibility() {
@@ -28,6 +32,14 @@ export function VisibilityProvider({
 }) {
   const [visible, setVisible] = useState(getInitialVisibility());
 
+  function hide() {
+    if (!isBrowser()) {
+      fetchNui("hide");
+    } else {
+      setVisible(false);
+    }
+  }
+
   useNuiEvent<boolean>("setVisible", setVisible);
 
   useEffect(() => {
@@ -35,12 +47,7 @@ export function VisibilityProvider({
 
     function exitHandler(event: KeyboardEvent) {
       if (!exitKeys.includes(event.code)) return;
-
-      if (!isBrowser()) {
-        fetchNui("hide");
-      } else {
-        setVisible(false);
-      }
+      hide();
     }
 
     window.addEventListener("keydown", exitHandler);
@@ -52,11 +59,15 @@ export function VisibilityProvider({
       value={{
         setVisible,
         visible,
+        hide: hide,
       }}
     >
-      <div className={cn("w-full h-full", visible ? "visible" : "hidden")}>
-        {children}
-      </div>
+      <>
+        <DebugOverlay />
+        <div className={cn("w-full h-full", visible ? "visible" : "hidden")}>
+          {children}
+        </div>
+      </>
     </Context.Provider>
   );
 }

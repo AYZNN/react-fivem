@@ -91,7 +91,7 @@ function PlayerComboBox() {
 }
 
 export default function App() {
-  const { setVisible } = useVisibility();
+  const { hide } = useVisibility();
 
   return (
     <div className="w-96 bg-background rounded border flex flex-col p-5 gap-5">
@@ -107,7 +107,7 @@ export default function App() {
           <PlayerComboBox />
         </div>
       </div>
-      <Button onClick={() => setVisible(false)}>Create Gang</Button>
+      <Button onClick={() => hide()}>Create Gang</Button>
     </div>
   );
 }
